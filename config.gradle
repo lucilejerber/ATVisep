@@ -2,10 +2,12 @@
 project.ext {
 
     // Main class
-    mainClass = "example.programming.HelloWorld"
+    //mainClass = "example.Motor"
+    mainClass = "example.ATV"
+    //mainClass = "example.MyFirstRobot"
 
     // Brick connection parameters
-    brickHost = "192.168.2.4"
+    brickHost = "192.168.137.134"
     brickUser = "robot"
     brickPassword = "maker"
 

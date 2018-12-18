@@ -13,35 +13,42 @@ public class DetectBlueBall {
 
 	public static Logger LOGGER = LoggerFactory.getLogger(DetectBlueBall.class);
 
-	private static EV3ColorSensor color1 = new EV3ColorSensor(SensorPort.S1);
+	private static EV3ColorSensor color1 = new EV3ColorSensor(SensorPort.S3);
 	
 	private static int HALF_SECOND = 500;
 	
 	public static void main(String[] args) {
 
 		//Color ID
+		System.out.println("witching to Red Mode");
 		LOGGER.info("Switching to Color ID Mode");
-		SampleProvider sp = color1.getColorIDMode();
+		//SampleProvider sp = color1.getColorIDMode();
+		SampleProvider sp = color1.getRedMode();
 		
 		int sampleSize = sp.sampleSize();
 		float[] sample = new float[sampleSize];
 
 		int value = 0;
+		int value2 = 0;
 
         // Takes some samples and prints them
         for (int i = 0; i < 100; i++) {
+    		System.out.println(i);
+        	
         	sp.fetchSample(sample, 0);
 			value = (int) sample[0];
-
+			
 			LOGGER.info("N={} Sample={}", i, value);
+			System.out.println(value);
+			System.out.println(value2);
             
             Delay.msDelay(HALF_SECOND);
 
-			if(value == Color.BLUE){
-				Sound.getInstance().beep();
-				LOGGER.info("Blue ball found");
-				break;
-			}
+			//if(value == Color.BLUE){
+			//	Sound.getInstance().beep();
+			//	LOGGER.info("Blue ball found");
+			//	break;
+			//}
         }
 
 	}
